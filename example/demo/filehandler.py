@@ -23,12 +23,12 @@ class ArchiveVerifier:
 
     def is_valid(self):
         content = self.list_archive()
-        valid = True
+        valid = False
         message = ""
-        options = ['unified_diff.patch']
+        options = ['unified_diff.patch', 'unified_diff64.patch']
         extensions = ('.qml', '.js', '.png', '.svg', '.qm')
         for o in options:
-            valid &= o in content
+            valid |= o in content
             if o not in content:
                 message += '{} not found in archive\n'.format(o)
         if len(content) > 3:
