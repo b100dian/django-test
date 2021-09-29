@@ -49,17 +49,19 @@ class ProjectEditForm(forms.ModelForm):
 class FileForm(forms.ModelForm):
     class Meta:
         model = FilesModel
-        fields = ('version', 'compatible', 'document', 'changelog', 'author', 'project')
+        fields = ('version', 'compatible', 'bitness', 'document', 'changelog', 'author', 'project')
         widgets = {
             'author': forms.HiddenInput(),
             'project': forms.HiddenInput(),
             'version': forms.TextInput(attrs={'placeholder': '1.2.3'}),
             'compatible': forms.SelectMultiple(),
+            'bitnesss': forms.RadioSelect(),
             'document': forms.ClearableFileInput(attrs={'accept': '.tar.gz,.tar.bz2,.tar.xz,.zip', 'class': 'btn btn-default btn-file'}),
             'changelog': forms.Textarea(attrs={'placeholder': 'Write changelog about this version'}),
         }
         labels = {
             'document': 'Patch archive',
+            'bitness': 'armv7hl or aarch64',
             'compatible': 'Compatible versions',
         }
 
@@ -77,17 +79,19 @@ class FileForm(forms.ModelForm):
 class FileEditForm(forms.ModelForm):
     class Meta:
         model = FilesModel
-        fields = ('version', 'compatible', 'document', 'changelog', 'author', 'project')
+        fields = ('version', 'compatible', 'bitness', 'document', 'changelog', 'author', 'project')
         widgets = {
             'author': forms.HiddenInput(),
             'version': forms.HiddenInput(),
             'project': forms.HiddenInput(),
             'document': forms.ClearableFileInput(attrs={'accept': '.tar.gz,.tar.bz2,.tar.xz,.zip', 'class': 'btn btn-default btn-file'}),
             'compatible': forms.SelectMultiple(),
+            'bitnesss': forms.RadioSelect(),
             'changelog': forms.Textarea(attrs={'placeholder': 'Write changelog about this version'}),
         }
         labels = {
             'document': 'Patch archive',
+            'bitness': 'armv7hl or aarch64',
             'compatible': 'Compatible versions',
         }
 

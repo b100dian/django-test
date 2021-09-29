@@ -138,6 +138,7 @@ class FilesModel(models.Model):
     document = models.FileField(storage=fs, upload_to=upload_path_handler, validators=[validate_file_type])
     version = models.CharField(blank=False, max_length=15, validators=[validate_version])
     compatible = MultiSelectField(blank=False, max_length=255, choices=compatible_choices, default=compatible_choices_default)
+    bitness = models.CharField(blank=True, max_length=2, choices=[(None, "Any"), ('32', "32-bit only"), ('64', "64 bit only"), ('96', "Separate 32 and 64 bit patches")])
     activations = models.PositiveIntegerField(blank=True, default=0)
     changelog = models.CharField(max_length=512, blank=True)
 
