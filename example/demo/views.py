@@ -249,6 +249,8 @@ def api_project(request):
                 if files.exists() and files.count() == 1:
                     objects['version'] = version
                     objects['compatible'] = files.values()[0]['compatible']
+                    objects['bitness'] = files.values()[0]['bitness']
+
                 objects.pop('total_activations')
                 objects.pop('rating')
             else:
